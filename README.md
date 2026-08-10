@@ -43,7 +43,7 @@ So the result of `tnbench` is not “the quantum computer won” or “the super
 - `W = 16`
 - `ε₀ = 5×10⁻⁸`
 - reported observable value: `0.183429`
-- QAT submission: [issue #171](https://github.com/quantum-advantage-tracker/quantum-advantage-tracker.github.io/issues/171)
+- QAT submission: [issue #171](https://github.com/quantum-advantage-tracker/quantum-advantage-tracker.github.io/issues/171) — closed after the submission was applied; QAT project status is `Verified`. `tnbench` does not assume that `Verified` means the numerical result was certified converged.
 
 The frozen adjudication snapshot contains the geometry reconstruction, causal-cone verifier, machine-readable output, adjudication ledger, and draft review comments. Documentation on `main` may continue to improve, but the tag records the pre-public-comment technical state.
 
@@ -118,7 +118,7 @@ The calculation is deliberately interpreted narrowly: it is a **support-containm
 
 ## The convergence question
 
-The reported `ZZ_{d=3}` SPP result is a single point at `W=16, ε₀=5×10⁻⁸`. The live QAT entry supplies no numerical error interval for that classical value.
+The reported `ZZ_{d=3}` SPP result is a single point at `W=16, ε₀=5×10⁻⁸`. The QAT submission form includes low/high error-bound fields; for #171 both were left as `No response`, so the published entry has no numerical uncertainty interval for the classical value.
 
 The relevant published evidence is asymmetric across observables:
 
@@ -323,7 +323,7 @@ A separate, narrower source-data question exists for the `ZZ_{d=2}` SPP series. 
 
 This is recorded as a **verified anomaly**, not a proven transcription error. Confirmation requires the underlying result artifact or submitter clarification.
 
-Relevant QAT submission: [issue #168](https://github.com/quantum-advantage-tracker/quantum-advantage-tracker.github.io/issues/168).
+The cycle-16 submission is [QAT issue #168](https://github.com/quantum-advantage-tracker/quantum-advantage-tracker.github.io/issues/168). The duplicate cycle-29 README row was introduced later in [QAT PR #230](https://github.com/quantum-advantage-tracker/quantum-advantage-tracker.github.io/pull/230), so the anomaly concerns that README update rather than the original #168 submission.
 
 ---
 
@@ -346,6 +346,7 @@ Draft comments are kept in [`notes/DRAFT_COMMENTS.md`](notes/DRAFT_COMMENTS.md) 
 - [QAT repository](https://github.com/quantum-advantage-tracker/quantum-advantage-tracker.github.io)
 - [SPP/ORQA `ZZd3` submission — QAT #171](https://github.com/quantum-advantage-tracker/quantum-advantage-tracker.github.io/issues/171)
 - [SPP/ORQA `ZZd2` submission — QAT #168](https://github.com/quantum-advantage-tracker/quantum-advantage-tracker.github.io/issues/168)
+- [Floquet README late-cycle data update — QAT PR #230](https://github.com/quantum-advantage-tracker/quantum-advantage-tracker.github.io/pull/230)
 - Broers, Sun & Yunoki, **Scalable simulation of quantum many-body dynamics with OR-represented quantum algebra**, arXiv:2506.13241; accepted in *Physical Review Applied* (2026).
 
 ---
