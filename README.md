@@ -10,9 +10,31 @@ The project is not attempting to make a quantum-advantage claim of its own, and 
 >
 > Given that the published magnetization SPP results remain sensitive to the reported truncation settings at cycle 16, what convergence evidence supports treating the single-setting `ZZ_{d=3}` SPP value at `W=16, ε₀=5×10⁻⁸` as a quantitatively controlled classical comparator?
 
+## What tnbench found — in plain language
+
+The original authors already said that their difficult late-cycle classical calculations were **not convincingly converged**. `tnbench` did not rediscover that.
+
+The added value here is more specific.
+
+The classical number being compared against the quantum result for the target `ZZ_{d=3}` case is **0.183429**. That number was reported at only **one** SPP approximation setting: `W=16, ε₀=5×10⁻⁸`. No published convergence sweep shows whether `0.183429` stays approximately the same when those approximation settings are tightened.
+
+That matters because the same classical method is visibly sensitive to its settings elsewhere in the published data. For magnetization at cycle 16, two reported SPP settings differ by `0.02413418`, which is larger than the quantum estimator's quoted half-width of `0.02130` at that cycle.
+
+This does **not** prove that `0.183429` is wrong. It proves something narrower and useful:
+
+> **The specific test needed to show that `0.183429` is a stable classical answer has not been reported.**
+
+The missing test is straightforward to state: rerun the same `ZZ_{d=3}` calculation while tightening `ε₀` and, separately, increasing `W`. If the answer settles onto a stable plateau, confidence in the classical comparator increases. If it keeps moving, the published value was still limited by truncation. Either outcome resolves the question.
+
+`tnbench` also checked whether this uncertainty could be settled cheaply by replacing the 51-qubit calculation with a much smaller exact simulation. The formal backward-support calculation shows that by cycle 10 all 86 `ZZ_{d=3}` terms have support cones spanning the full 51-qubit patch. Therefore a 16–20-qubit calculation cannot be justified as an **exact substitute by support containment** for the reported cycle-13+ results.
+
+So the result of `tnbench` is not “the quantum computer won” or “the supercomputer was wrong.” It is:
+
+> **We isolated the exact missing convergence test that determines whether the published classical number is stable enough to judge the quantum-vs-classical comparison, and we ruled out the obvious small-system shortcut as an exact replacement.**
+
 ## Status
 
-**Adjudication snapshot:** [`v0.1.0-adjudication`](https://github.com/amitb-quantum/tnbench/releases/tag/v0.1.0-adjudication)
+**Adjudication snapshot:** [`v0.1.0-adjudication`](https://github.com/amitb-quantum/tnbench/tree/v0.1.0-adjudication)
 
 **Primary QAT instance under review:**
 
