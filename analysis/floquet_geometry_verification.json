@@ -1,0 +1,156 @@
+{
+  "schema": "tnbench.floquet_geometry_verification.v1",
+  "upstream_sha": "29bf4d07fa3a16c8d280e717780633299da84c27",
+  "inputs": {
+    "qasm": {
+      "path": "instances/qat/data/observable-estimations/circuit-models/floquet_mixed_field_ising/floquet_mixed_field_ising_zzd3_51qx16c.qasm",
+      "sha256": "597fd6743a87727e8d59911b68084b0f2241ccd4528d1261a33a1387b5e08851"
+    },
+    "readme": {
+      "path": "instances/qat/data/observable-estimations/circuit-models/floquet_mixed_field_ising/README.md",
+      "sha256": "887704aed04b2999eae9e65477d07d0a2706d49047149c8317f43c1a9cbc53a4"
+    }
+  },
+  "edge_layers": {
+    "E1": 19,
+    "E2": 19,
+    "E3": 18,
+    "total_unique_edges": 56
+  },
+  "degree_histogram": {
+    "2": 41,
+    "3": 10
+  },
+  "distance_3_pairs": {
+    "graph_derived_count": 86,
+    "readme_count": 86,
+    "readme_unique_count": 86,
+    "sets_equal": true,
+    "canonical_sha256": "fd7b30af06c8ba281b9c0dd952988190a952aaa4c5dd3fbdd7b41d3d2835959a"
+  },
+  "causal_cone": {
+    "definition": "union of possible backward Pauli support; terminal ZZ commutes through the first backward E3 RZZ layer",
+    "first_cycle_all_86_pairs_span_51": 10,
+    "table": [
+      {
+        "cycles": 1,
+        "min_cone_size": 4,
+        "max_cone_size": 8,
+        "full_51_count": 0,
+        "pair_count": 86
+      },
+      {
+        "cycles": 2,
+        "min_cone_size": 9,
+        "max_cone_size": 21,
+        "full_51_count": 0,
+        "pair_count": 86
+      },
+      {
+        "cycles": 3,
+        "min_cone_size": 15,
+        "max_cone_size": 36,
+        "full_51_count": 0,
+        "pair_count": 86
+      },
+      {
+        "cycles": 4,
+        "min_cone_size": 22,
+        "max_cone_size": 49,
+        "full_51_count": 0,
+        "pair_count": 86
+      },
+      {
+        "cycles": 5,
+        "min_cone_size": 28,
+        "max_cone_size": 51,
+        "full_51_count": 11,
+        "pair_count": 86
+      },
+      {
+        "cycles": 6,
+        "min_cone_size": 32,
+        "max_cone_size": 51,
+        "full_51_count": 32,
+        "pair_count": 86
+      },
+      {
+        "cycles": 7,
+        "min_cone_size": 39,
+        "max_cone_size": 51,
+        "full_51_count": 62,
+        "pair_count": 86
+      },
+      {
+        "cycles": 8,
+        "min_cone_size": 45,
+        "max_cone_size": 51,
+        "full_51_count": 75,
+        "pair_count": 86
+      },
+      {
+        "cycles": 9,
+        "min_cone_size": 50,
+        "max_cone_size": 51,
+        "full_51_count": 85,
+        "pair_count": 86
+      },
+      {
+        "cycles": 10,
+        "min_cone_size": 51,
+        "max_cone_size": 51,
+        "full_51_count": 86,
+        "pair_count": 86
+      },
+      {
+        "cycles": 11,
+        "min_cone_size": 51,
+        "max_cone_size": 51,
+        "full_51_count": 86,
+        "pair_count": 86
+      },
+      {
+        "cycles": 12,
+        "min_cone_size": 51,
+        "max_cone_size": 51,
+        "full_51_count": 86,
+        "pair_count": 86
+      },
+      {
+        "cycles": 13,
+        "min_cone_size": 51,
+        "max_cone_size": 51,
+        "full_51_count": 86,
+        "pair_count": 86
+      },
+      {
+        "cycles": 14,
+        "min_cone_size": 51,
+        "max_cone_size": 51,
+        "full_51_count": 86,
+        "pair_count": 86
+      },
+      {
+        "cycles": 15,
+        "min_cone_size": 51,
+        "max_cone_size": 51,
+        "full_51_count": 86,
+        "pair_count": 86
+      },
+      {
+        "cycles": 16,
+        "min_cone_size": 51,
+        "max_cone_size": 51,
+        "full_51_count": 86,
+        "pair_count": 86
+      }
+    ]
+  },
+  "assertions": {
+    "edge_count_56": true,
+    "degree_histogram_10_deg3_41_deg2": true,
+    "distance3_pair_count_86": true,
+    "readme_pair_set_matches_graph": true,
+    "all_distance3_cones_span_51_by_cycle_10": true
+  }
+}
