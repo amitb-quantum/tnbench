@@ -226,7 +226,7 @@ print("5. MEMORY MODEL  -- heavy-hex PEPS, estimate only, verify empirically")
 print(SEP)
 
 # 51-qubit heavy-hex patch: rough split of degree-3 vertex vs degree-2 edge sites
-N_DEG3, N_DEG2 = 17, 34
+N_DEG3, N_DEG2 = 10, 41
 print(f"  assumed patch: {N_DEG3} degree-3 sites, {N_DEG2} degree-2 sites, phys dim 2")
 print()
 print("  State memory (GPU-resident, complex64):")

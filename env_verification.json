@@ -1,0 +1,50 @@
+{
+  "utc": "2026-08-10T20:43:33.423421+00:00",
+  "host": "vermithor",
+  "python": "3.12.13",
+  "gates": {
+    "core_packages": {
+      "pass": true,
+      "detail": "quimb + cotengra + numpy required"
+    },
+    "gpu_available": {
+      "pass": true,
+      "detail": "NVIDIA GeForce RTX 5090"
+    },
+    "precision_measured": {
+      "pass": true,
+      "detail": "53.5x fp64 penalty"
+    },
+    "dtype_agreement_cpu": {
+      "pass": true,
+      "detail": "rel=1.92e-07, threshold 1e-4"
+    },
+    "dtype_agreement_gpu": {
+      "pass": true,
+      "detail": "rel=2.01e-07"
+    }
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.18.0",
+    "quimb": "1.14.0",
+    "cotengra": "0.8.2",
+    "autoray": "0.10.1",
+    "opt_einsum": "3.4.0",
+    "cupy": "14.1.1"
+  },
+  "kahypar": false,
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 5090",
+    "cc": "12.0",
+    "vram_total_gib": 31.84,
+    "vram_free_gib": 30.2
+  },
+  "precision": {
+    "c64_gflops": 89194.2,
+    "c128_gflops": 1666.6,
+    "penalty_x": 53.5
+  },
+  "dtype_agreement_cpu": 1.9231565442676014e-07,
+  "dtype_agreement_gpu": 2.0110714374895952e-07
+}
