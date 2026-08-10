@@ -6,3 +6,4 @@ runs/**/*.npz
 runs/**/*.h5
 *.log
 *.bak_*
+instances/qat/
