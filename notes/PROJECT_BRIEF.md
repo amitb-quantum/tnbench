@@ -24,9 +24,14 @@ cheap door: a purely classical result, produced on a laptop CPU, that
 demotes a quantum claim. No QPU required. Public review comments on open
 submissions require no submission at all.
 
-**Immediate question.** Is the SPP (ORQA) entry for
-`floquet_mixed_field_ising_zzd3_51qx16c` converged, or is it a
-truncation-biased estimate presented without a convergence study?
+**Immediate question.** Is sufficient convergence evidence reported to
+treat the SPP/ORQA value for `floquet_mixed_field_ising_zzd3_51qx16c`
+as a quantitatively controlled classical comparator?
+
+(Superseded framing, retained for provenance: the original question
+asked whether the entry was *truncation-biased*. That framing was
+dropped — see C1c in the ledger. No claim that 0.183429 is incorrect
+is made or required.)
 
 ---
 
@@ -60,8 +65,15 @@ No measurement instructions. Observable applied in post-processing.
 
 ### 2.3 Observable
 
-`ZZ_d3 = (1/N_d3) Σ_{(i,j): d(i,j)=3} Z_i Z_j`, averaged over the
-86-pair list given in the upstream README.
+`ZZ_d3 = (1/N_d3) Σ_{(i,j): d(i,j)=3} Z_i Z_j`, with **N_d3 = 86**,
+averaged over the 86-pair list given in the upstream README.
+
+Independently confirmed: reconstructing the 51-node graph from the
+upstream edge layers yields 86 unordered distance-3 pairs, and the
+README list contains 86 unique entries matching that set exactly.
+An earlier draft of this brief said 84 — see F1 in the ledger. A
+reproducer normalising by 84 computes a different observable
+(a 2.4% shift, comparable to several residuals under discussion).
 
 ### 2.4 Reported results, zzd3, N=51
 
@@ -112,6 +124,14 @@ disclosure rather than present non-convergence as a discovery.
 ---
 
 ## 3. Contested claims — asserted by Claude, NOT verified
+
+> **RESOLVED — see notes/ADJUDICATION_LEDGER.md for current status.**
+> C1–C5 are kept verbatim below as the original hypotheses, for
+> provenance. Outcome in brief: C1 count VERIFIED but its mechanism
+> REJECTED; C2's RZZ observation VERIFIED, its RX "near-Clifford"
+> claim FALSE; C3 PARTIAL (5/7); C4 FALSE; C5 REJECTED on the narrow
+> support-containment ground only. Do not cite this section as
+> current.
 
 Each needs independent derivation or an executable check. Do not treat
 any as established.

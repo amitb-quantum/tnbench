@@ -3,6 +3,7 @@
 import ast
 import hashlib
 import json
+import math
 import re
 from collections import Counter, deque
 from pathlib import Path
@@ -159,23 +160,27 @@ def backward_cone(pair, cycles, e1, e2, e3):
         E2 RZZ -> RZ -> RX
         E1 RZZ -> RZ -> RX
 
-    The terminal ZZ observable is purely Z, so the very first
-    backward E3 RZZ layer commutes exactly and does not expand support.
+    At the terminal observable, the Pauli is purely Z, so the first
+    backward RZZ layer cannot enlarge support. After crossing the first
+    RX layer, sin(theta_x/3) != 0 guarantees a transverse branch on each
+    supported qubit. Thereafter, an incident RZZ with
+    sin(theta_zz) != 0 can enlarge the union-of-possible-support cone.
 
-    After the following RX layer, sin(theta_x/3) != 0, so transverse
-    components exist and subsequent incident RZZ layers can enlarge
-    the union-of-possible-support cone.
+    This is a formal support-containment cone, not a statement that every
+    included qubit contributes materially to the final expectation.
     """
     support = set(pair)
-    terminal_diagonal_rzz = True
+    transverse_ready = False
 
     for _ in range(cycles):
         for layer in (e3, e2, e1):
-            if terminal_diagonal_rzz:
-                terminal_diagonal_rzz = False
-                continue
+            if transverse_ready:
+                support = expand_support(support, layer)
 
-            support = expand_support(support, layer)
+            # Backward propagation now crosses RZ then RX. Since
+            # sin(theta_x/3) != 0, every supported Z component has a
+            # nonzero transverse branch before the next RZZ layer.
+            transverse_ready = True
 
     return support
 
@@ -187,6 +192,22 @@ def canonical_pair_hash(pairs):
 
 qasm_text = QASM.read_text()
 readme_text = README.read_text()
+
+# Support-expansion assumptions used by backward_cone().
+# These values are taken from the frozen QASM instance.
+rx_match = re.search(r"^rx\(([^)]+)\)", qasm_text, re.MULTILINE)
+if not rx_match:
+    raise RuntimeError("could not parse RX angle from QASM")
+
+theta_x_over_3 = float(rx_match.group(1))
+theta_zz = math.pi / 3
+
+assert abs(math.sin(theta_x_over_3)) > 1e-12, (
+    "RX angle has zero sine; transverse support is not generated"
+)
+assert abs(math.sin(theta_zz)) > 1e-12, (
+    "RZZ angle has zero sine; support cannot expand across RZZ edges"
+)
 
 e1, e2, e3 = parse_first_cycle_edge_layers(qasm_text)
 
@@ -287,9 +308,15 @@ result = {
     },
     "causal_cone": {
         "definition": (
-            "union of possible backward Pauli support; terminal ZZ "
-            "commutes through the first backward E3 RZZ layer"
+            "union of possible backward Pauli support; expansion begins "
+            "only after backward propagation crosses the first RX layer"
         ),
+        "assumptions": {
+            "theta_x_over_3": theta_x_over_3,
+            "sin_theta_x_over_3_nonzero": abs(math.sin(theta_x_over_3)) > 1e-12,
+            "theta_zz": theta_zz,
+            "sin_theta_zz_nonzero": abs(math.sin(theta_zz)) > 1e-12,
+        },
         "first_cycle_all_86_pairs_span_51": first_full_cycle,
         "table": cone_table,
     },

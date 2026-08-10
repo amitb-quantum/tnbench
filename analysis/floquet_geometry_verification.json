@@ -29,7 +29,13 @@
     "canonical_sha256": "fd7b30af06c8ba281b9c0dd952988190a952aaa4c5dd3fbdd7b41d3d2835959a"
   },
   "causal_cone": {
-    "definition": "union of possible backward Pauli support; terminal ZZ commutes through the first backward E3 RZZ layer",
+    "definition": "union of possible backward Pauli support; expansion begins only after backward propagation crosses the first RX layer",
+    "assumptions": {
+      "theta_x_over_3": 0.5218893140942666,
+      "sin_theta_x_over_3_nonzero": true,
+      "theta_zz": 1.0471975511965976,
+      "sin_theta_zz_nonzero": true
+    },
     "first_cycle_all_86_pairs_span_51": 10,
     "table": [
       {
