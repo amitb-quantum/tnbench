@@ -1,97 +1,58 @@
 # Draft public comments — QAT observable-estimations
 
-Status: DRAFT. Not posted. Freeze before posting; do not edit after
-posting without noting the edit.
+Status: FROZEN PRE-PUBLICATION — 2026-08-10.
 
-Verify before posting:
-- [ ] Which issue number is the SPP/ORQA **zzd3** submission (of #171,
-      #168, #165). Post on that one, not the ZIZ or mag issue.
-- [ ] Re-confirm live tracker still shows `0.183429 [N/A, N/A]`.
-- [ ] Re-confirm the ZIZ cycle-16 / cycle-29 duplicate in current
-      upstream source (not the rendered README).
-- [ ] Repo public, LICENSE present, verifier runs clean from a fresh
-      clone.
+Purpose: preserve the exact first public comment and posting sequence before publication. Do not edit this frozen text after posting without recording the change separately.
 
----
+## Posting sequence
 
-## Comment 1 — post first, separately
+1. Post the convergence-evidence comment below on QAT issue #168.
+2. Stop after the first post and allow responses to shape any follow-up.
+3. Do not post to #171 or raise the PR #230 / cycle-29 duplicate-value question on the same day.
+4. If submitters provide a same-instance convergence sweep, update the adjudication ledger plainly and acknowledge the evidence publicly.
 
-**Venue:** the ZIZ (ZZd2) submission issue.
-**Purpose:** a factual correction, useful to the submitters, low risk.
-Establishes that we read the submission carefully before asking anything
-harder.
-
-> Possible transcription issue in the ZIZ late-cycle SPP values.
->
-> In the current `floquet_mixed_field_ising` README, the SPP (W=16,
-> ε₀=1e-9) entry for ZIZ reads 0.250253 at cycle 16 and again 0.250253
-> at cycle 29 — identical to six decimals, with different runtimes
-> (31,559 s vs 42,506 s).
->
-> The cycle-29 value also breaks the local trend: 0.2355 at cycle 26 and
-> 0.23 at cycle 30 bracket it.
->
-> Could you confirm the cycle-29 number against the underlying result
-> artifact? If it is a copy from the cycle-16 row it would be worth
-> correcting; if it is genuine, then disregard.
+Important venue distinction: #168 is **not** the correct venue for the cycle-29 duplicate-value anomaly; that row was introduced in PR #230. #168 *is* an appropriate venue for the convergence question below because it is the open SPP/ORQA `ZZ_{d=2}` submission at `W=16, ε₀=1e-9`, with no submitted low/high error bounds.
 
 ---
 
-## Comment 2 — post only after Comment 1 has been seen
+## Comment 1 — QAT issue #168
 
-**Venue:** the SPP/ORQA **zzd3** submission issue.
-**Purpose:** the frozen thesis. A request for convergence evidence, not
-an assertion that the value is wrong.
+**Venue:** https://github.com/quantum-advantage-tracker/quantum-advantage-tracker.github.io/issues/168
 
-> Question on convergence evidence for the ZZ_{d=3} SPP entry.
+**Purpose:** independent geometry verification plus a direct, non-accusatory request for convergence evidence for the SPP truncation settings.
+
+> Independent geometry verification, and a question on convergence evidence for this entry.
 >
-> The tracker lists the SPP/ORQA result for
-> `floquet_mixed_field_ising_zzd3_51qx16c` as 0.183429 with [N/A, N/A]
-> bounds, at W=16, ε₀=5e-8.
+> I reconstructed the 51-qubit heavy-hex graph and the ZZ_{d=2} / ZZ_{d=3} observables directly from the frozen upstream edge lists, and can confirm the published geometry: 56 edges (19/19/18), degree histogram {2: 41, 3: 10}, 71 distance-2 pairs, 86 distance-3 pairs, and the README pair lists match the graph-derived sets exactly. Verifier and machine-readable output: https://github.com/amitb-quantum/tnbench/tree/v0.1.0-adjudication — standard library only, reproduces from a clean clone in two commands.
 >
-> Three things make the convergence status hard to assess from outside:
+> My question is about the convergence evidence for the SPP truncation settings, since the error-bound fields on this submission are blank.
 >
-> 1. ZZ_{d=3} is tabulated at a single (W, ε₀) setting. Magnetization
->    has two, ZIZ has one at ε₀=1e-9. ε₀=5e-8 is the loosest threshold
->    reported for this instance.
+> For magnetization at cycle 16 the README reports two SPP settings: (W=11, ε₀=1e-11) → 0.41110594 and (W=20, ε₀=1e-9) → 0.38697176. Those differ by 0.02413, which is about 1.13× the QESEM interval half-width of 0.02130 at the same cycle. So on the one observable where a two-setting comparison is published, the parameter sensitivity exceeds the quantum estimator's quoted uncertainty.
 >
-> 2. Where a two-setting comparison does exist — magnetization at cycle
->    16 — the two settings give 0.41111 (W=11, ε₀=1e-11) and 0.38697
->    (W=20, ε₀=1e-9). That is a difference of 0.02413, larger than the
->    QESEM interval half-width of 0.02130 at the same cycle. So on the
->    one observable where truncation sensitivity is visible, it exceeds
->    the quantum estimator's quoted uncertainty.
+> This entry (ZZ_{d=2}) reports a single setting, W=16, ε₀=1e-9, and ZZ_{d=3} reports a single setting at ε₀=5e-8. Is there a same-instance sweep — tightening ε₀, and separately increasing W, at fixed cycle count — that shows these values on a plateau? A plateau narrower than the QESEM half-width would settle it; continued drift under tightening would be equally informative.
 >
-> 3. The README states that neither classical method achieves convincing
->    convergence on this instance, and the ORQA methodology treats
->    truncation accuracy as strongly system-dependent, with systematic
->    ε₀ convergence checks identified as important.
->
-> Given that, what convergence evidence supports treating the
-> single-setting ZZ_{d=3} value at W=16, ε₀=5e-8 as a quantitatively
-> controlled classical comparator?
->
-> Concretely, a sweep of ε₀ (and separately W) at fixed cycle count,
-> showing a plateau narrower than the QESEM half-width, would settle it
-> either way. A drift under tightening would be equally informative.
->
-> Separately: we independently reconstructed the 51-qubit heavy-hex
-> graph from the published edge layers and confirm the ZZ_{d=3} pair
-> list contains 86 distance-3 pairs matching the graph-derived set
-> exactly. We also computed formal backward support cones for all 86
-> pairs; by cycle 10 every cone spans all 51 qubits, so no small-patch
-> reduction is justified by support containment at the cycles reported
-> here. Verifier and provenance: <repo URL>
+> To be clear, I'm not suggesting the reported values are incorrect. I'm asking what convergence evidence is available, given that the README notes convincing classical convergence is not achieved in the late-cycle regime and the ORQA methodology treats truncation accuracy as system-dependent.
+
+---
+
+## Deferred follow-ups
+
+### QAT #171
+
+Do not post on the same day as Comment 1. #171 is the closed `ZZ_{d=3}` SPP/ORQA submission (`0.183429`, `W=16`, `ε₀=5e-8`) and carries project status `Verified`. If a follow-up is needed, first incorporate any response on #168. Do not assume that `Verified` means scientific certification of convergence; ask what the status establishes if that remains relevant.
+
+### PR #230 / cycle-29 ZZd2 anomaly
+
+Do not post on the same day as Comment 1. The cycle-29 `ZZ_{d=2}` SPP value `0.250253` was introduced in PR #230 and duplicates the cycle-16 value to six decimals while reporting a different runtime. This remains a verified anomaly, not a proven transcription error. If raised later, use PR #230 provenance or a fresh data-quality issue rather than #168.
 
 ---
 
 ## Tone rules
 
-- No claim that 0.183429 is wrong. We do not know that.
-- No mention of the one-sided residual pattern. Descriptive only, and
-  the cross-observable comparison confounds ε₀ with observable
-  difficulty.
-- No "schema violation." Evidentiary tension, phrased as a question.
-- No speculation about why parameters were chosen.
-- If a submitter answers with convergence evidence, the correct public
-  response is to say so plainly and update the ledger.
+- No claim that any reported SPP value is wrong.
+- No claim of downward truncation bias.
+- No one-sided residual argument.
+- No schema-violation accusation.
+- No speculation about parameter intent.
+- Distinguish `No response` / unavailable bounds from a demonstrated zero uncertainty.
+- If new evidence resolves the question, update the ledger and say so plainly.
