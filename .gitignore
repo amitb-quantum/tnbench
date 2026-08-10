@@ -5,3 +5,4 @@ runs/**/*.npy
 runs/**/*.npz
 runs/**/*.h5
 *.log
+*.bak_*
