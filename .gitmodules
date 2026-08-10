@@ -1,0 +1,3 @@
+[submodule "instances/qat"]
+	path = instances/qat
+	url = https://github.com/quantum-advantage-tracker/quantum-advantage-tracker.github.io.git
